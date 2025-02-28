@@ -1,0 +1,2 @@
+Generated with command:
+LD_LIBRARY_PATH="/home/onni/.nuget/packages/libclangsharp.runtime.linux-x64/18.1.3.1/runtimes/linux-x64/native/" ClangSharpPInvokeGenerator -F /usr/include/capstone/ -f arm64.h arm.h bpf.h capstone.h evm.h m680x.h m68k.h mips.h mos65xx.h platform.h ppc.h riscv.h sh.h sparc.h systemz.h tms320c64x.h tricore.h wasm.h x86.h xcore.h -n Rosentti.Capstone.Native -o output -I=/usr/lib/clang/18/include/ -c preview-codegen -c generate-file-scoped-namespaces -c generate-aggressive-inlining -c multi-file -c generate-helper-types

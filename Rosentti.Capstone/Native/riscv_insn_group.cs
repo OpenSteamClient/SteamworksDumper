@@ -1,0 +1,22 @@
+namespace Rosentti.Capstone.Native;
+
+[NativeTypeName("unsigned int")]
+public enum riscv_insn_group : uint
+{
+    RISCV_GRP_INVALID = 0,
+    RISCV_GRP_JUMP,
+    RISCV_GRP_CALL,
+    RISCV_GRP_RET,
+    RISCV_GRP_INT,
+    RISCV_GRP_IRET,
+    RISCV_GRP_PRIVILEGE,
+    RISCV_GRP_BRANCH_RELATIVE,
+    RISCV_GRP_ISRV32 = 128,
+    RISCV_GRP_ISRV64,
+    RISCV_GRP_HASSTDEXTA,
+    RISCV_GRP_HASSTDEXTC,
+    RISCV_GRP_HASSTDEXTD,
+    RISCV_GRP_HASSTDEXTF,
+    RISCV_GRP_HASSTDEXTM,
+    RISCV_GRP_ENDING,
+}

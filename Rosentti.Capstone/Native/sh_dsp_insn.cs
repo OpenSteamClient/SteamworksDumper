@@ -1,0 +1,36 @@
+namespace Rosentti.Capstone.Native;
+
+[NativeTypeName("unsigned int")]
+public enum sh_dsp_insn : uint
+{
+    SH_INS_DSP_NOP = 1,
+    SH_INS_DSP_MOV,
+    SH_INS_DSP_PSHL,
+    SH_INS_DSP_PSHA,
+    SH_INS_DSP_PMULS,
+    SH_INS_DSP_PCLR_PMULS,
+    SH_INS_DSP_PSUB_PMULS,
+    SH_INS_DSP_PADD_PMULS,
+    SH_INS_DSP_PSUBC,
+    SH_INS_DSP_PADDC,
+    SH_INS_DSP_PCMP,
+    SH_INS_DSP_PABS,
+    SH_INS_DSP_PRND,
+    SH_INS_DSP_PSUB,
+    SH_INS_DSP_PSUBr,
+    SH_INS_DSP_PADD,
+    SH_INS_DSP_PAND,
+    SH_INS_DSP_PXOR,
+    SH_INS_DSP_POR,
+    SH_INS_DSP_PDEC,
+    SH_INS_DSP_PINC,
+    SH_INS_DSP_PCLR,
+    SH_INS_DSP_PDMSB,
+    SH_INS_DSP_PNEG,
+    SH_INS_DSP_PCOPY,
+    SH_INS_DSP_PSTS,
+    SH_INS_DSP_PLDS,
+    SH_INS_DSP_PSWAP,
+    SH_INS_DSP_PWAD,
+    SH_INS_DSP_PWSB,
+}

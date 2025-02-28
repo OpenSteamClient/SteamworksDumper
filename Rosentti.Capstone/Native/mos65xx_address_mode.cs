@@ -1,0 +1,32 @@
+namespace Rosentti.Capstone.Native;
+
+[NativeTypeName("unsigned int")]
+public enum mos65xx_address_mode : uint
+{
+    MOS65XX_AM_NONE = 0,
+    MOS65XX_AM_IMP,
+    MOS65XX_AM_ACC,
+    MOS65XX_AM_IMM,
+    MOS65XX_AM_REL,
+    MOS65XX_AM_INT,
+    MOS65XX_AM_BLOCK,
+    MOS65XX_AM_ZP,
+    MOS65XX_AM_ZP_X,
+    MOS65XX_AM_ZP_Y,
+    MOS65XX_AM_ZP_REL,
+    MOS65XX_AM_ZP_IND,
+    MOS65XX_AM_ZP_X_IND,
+    MOS65XX_AM_ZP_IND_Y,
+    MOS65XX_AM_ZP_IND_LONG,
+    MOS65XX_AM_ZP_IND_LONG_Y,
+    MOS65XX_AM_ABS,
+    MOS65XX_AM_ABS_X,
+    MOS65XX_AM_ABS_Y,
+    MOS65XX_AM_ABS_IND,
+    MOS65XX_AM_ABS_X_IND,
+    MOS65XX_AM_ABS_IND_LONG,
+    MOS65XX_AM_ABS_LONG,
+    MOS65XX_AM_ABS_LONG_X,
+    MOS65XX_AM_SR,
+    MOS65XX_AM_SR_IND_Y,
+}
