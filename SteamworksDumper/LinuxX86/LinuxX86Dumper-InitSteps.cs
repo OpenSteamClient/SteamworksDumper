@@ -80,7 +80,6 @@ public partial class LinuxX86Dumper
             return;
         }
         
-        //TODO: Could this be optimized in debug builds? DPA also reports 3 gigabytes of allocations here...
         Stopwatch measure = new();
         measure.Start();
         

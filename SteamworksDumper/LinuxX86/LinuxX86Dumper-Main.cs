@@ -397,11 +397,17 @@ public partial class LinuxX86Dumper
         {
             if (absoluteCallPosition == constants.PutBytesFnOffset || absoluteCallPosition == constants.GetBytesFnOffset || absoluteCallPosition == constants.GetBytesFn2Offset)
             {
+                var lastLoad = currentFunction.LastLoad;
+                currentFunction.LastLoad = 0;
+
                 // It's probably a boolean in this case, mark it as such
-                if (currentFunction.LastLoad == 1 && currentFunction.Name.StartsWith("B") || currentFunction.Name.StartsWith("Is"))
+                if (lastLoad == 1 && (currentFunction.Name.StartsWith("B") || currentFunction.Name.StartsWith("Is")))
                     return "boolean";
+
+                if (lastLoad == 0)
+                    return "bytes_external_length";
                 
-                return $"bytes{currentFunction.LastLoad}";
+                return $"bytes{lastLoad}";
             } else if (absoluteCallPosition == constants.PutSingleByteFnOffset || absoluteCallPosition == constants.GetSingleByteFnOffset)
             {
                 // It's probably a boolean in this case, mark it as such

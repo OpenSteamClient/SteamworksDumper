@@ -8,6 +8,8 @@ A library to dump 32-bit steam for linux `steamclient.so` binary, and retrieve t
 TODO: 
 - Count argc
 - Save adapters?
+- Dump callbacks
+- Dump enums
 
 
 ## Requirements

@@ -151,14 +151,29 @@ public partial class LinuxX86Dumper : IDumper
     }
     
     private static readonly string[] dataSections = [".data", ".rodata", ".data.rel.ro", ".data.rel.ro.local", ".rodata.str", ".rodata.cst"];
-    public bool IsOffsetInData(int offset)
+
+    private readonly List<(int, int)> dataOffsets = new();
+    private void PrepareDataOffsets()
     {
+        if (dataOffsets.Count != 0)
+            return;
+        
         for (int i = 0; i < dataSections.Length; i++)
         {
             if (!TryGetSectionInfo(dataSections[i], out int dataEndAddr, out int dataOffset))
                 continue;
-
-            if (offset < dataEndAddr && offset >= dataOffset)
+            
+            dataOffsets.Add((dataEndAddr, dataOffset));
+        }
+    }
+    
+    public bool IsOffsetInData(int offset)
+    {
+        PrepareDataOffsets();
+        
+        for (int i = 0; i < dataOffsets.Count; i++)
+        {
+            if (offset < dataOffsets[i].Item1 && offset >= dataOffsets[i].Item2)
                 return true;
         }
 
