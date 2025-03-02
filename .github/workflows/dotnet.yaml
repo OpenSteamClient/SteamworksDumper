@@ -1,0 +1,44 @@
+name: .NET Build Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Download repo and submodules
+      run: | 
+        git submodule update --init --recursive
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Install build dependencies
+      run: | 
+        sudo apt-get update
+        sudo apt-get install -y clang zlib1g-dev
+
+    - name: Build Release SteamworksDumper.Standalone
+      working-directory: ./SteamworksDumper.Standalone
+      run: dotnet publish --use-current-runtime -c Release
+
+    - name: Set version envs
+      run: |
+        echo "OSWVersion=$(dotnet msbuild -getproperty:Version ./SteamworksDumper/SteamworksDumper.csproj)" >> $GITHUB_ENV
+
+    - name: Upload build
+    - uses: softprops/action-gh-release@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        draft: false
+        prerelease: false
+        make_latest: true
+        tag_name: v${{ env.OSWVersion }}
+        name: ${{ env.OSWVersion }}
+        files: ${GITHUB_WORKSPACE}/artifacts/publish/SteamworksDumper.Standalone/release/SteamworksDumper.Standalone
