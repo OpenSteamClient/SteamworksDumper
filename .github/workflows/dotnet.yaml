@@ -44,4 +44,5 @@ jobs:
         make_latest: true
         tag_name: v${{ env.OSWVersion }}
         name: ${{ env.OSWVersion }}
-        files: ${GITHUB_WORKSPACE}/artifacts/publish/SteamworksDumper.Standalone/release/SteamworksDumper.Standalone
+        fail_on_unmatched_files: true
+        files: ./artifacts/publish/SteamworksDumper.Standalone/release/SteamworksDumper.Standalone
